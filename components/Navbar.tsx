@@ -6,7 +6,7 @@ import Button from './Button';
 
 const Navbar = () => {
   return (
-    <nav className="border-2  flexBetween max-container padding-container relative z-30 py-5">
+    <nav className="flexBetween max-container padding-container relative z-30 py-5">
       <Link href="/">
         <Image src={logo} alt={'logo'} />
       </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
           type={'button'}
           title={'login'}
           icon={'/user.svg'}
-          varialt={'btn_dark_green'}
+          variant={'btn_dark_green'}
         />
       </div>
 

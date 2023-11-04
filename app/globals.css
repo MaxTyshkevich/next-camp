@@ -124,9 +124,9 @@ body {
     @apply text-[16px] font-[700];
   }
 
-  /* Hero */
   .hero-map {
-    @apply absolute right-0 top-0 h-screen w-screen bg-pattern-2 bg-cover bg-center md:-right-28 xl:-top-60;
+    /*  screen w-screen */
+    @apply absolute right-0 top-0 w-full h-full bg-pattern-2 bg-cover bg-center md:-right-28 xl:-top-60;
   }
 
   /* Camp */
