@@ -44,7 +44,7 @@ const CampSite = ({ background, title, subtitle, peopleJoined }: Props) => (
 
 const Camp = () => {
   return (
-    <section className="border-2 border-green-500 2xl:max-container relative flex flex-col py-10 lg:mb-10 lg:py-20 xl:mb-20">
+    <section className="2xl:max-container relative flex flex-col py-10 lg:mb-10 lg:py-20 xl:mb-20">
       <div className="hide-scrollbar flex h-[340px] lg:h-[400px] xl:h-[600px] w-fill items-start justify-start gap-8 overflow-x-auto">
         <CampSite
           background="bg-bg-img-1"
