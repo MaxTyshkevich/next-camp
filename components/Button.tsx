@@ -10,18 +10,23 @@ type varialts =
 type ButtonProps = {
   type: 'button' | 'submit';
   title: string;
-  icon?: string;
   variant: varialts;
+  icon?: string;
+  full?: boolean;
 };
 
-const Button = ({ type, title, icon, variant }: ButtonProps) => {
+const Button = ({ type, title, icon, variant, full }: ButtonProps) => {
   return (
     <button
       type={type}
-      className={`flexCenter rounded-full border gap-3 ${variant}`}
+      className={`flexCenter rounded-full border gap-3 ${variant} ${
+        full && 'w-full'
+      }`}
     >
       {icon && <Image src={icon} height={24} width={24} alt="menu" />}
-      <label className="bold-16 whitespace-nowrap">{title}</label>
+      <label className="bold-16 whitespace-nowrap cursor-pointer">
+        {title}
+      </label>
     </button>
   );
 };
