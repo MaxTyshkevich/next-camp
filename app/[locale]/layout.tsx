@@ -5,8 +5,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 // i18n
-import { useLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
 
 const locales = ['en', 'ru'];
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: 'Travel UI/UX',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { locale },
 }: {
@@ -27,13 +27,22 @@ export default function RootLayout({
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 
+  let messages;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
   return (
     <html lang={locale}>
-      <body className={inter.className}>
-        <Navbar />
-        <main className="relative overflow-hidden">{children}</main>
-        <Footer />
-      </body>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <body className={inter.className}>
+          <Navbar />
+          <main className="relative overflow-hidden">{children}</main>
+          <Footer />
+        </body>
+      </NextIntlClientProvider>
     </html>
   );
 }

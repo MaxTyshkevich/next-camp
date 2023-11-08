@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/public/hilink-logo.svg';
-import { NAV_LINKS } from '@/contants';
 import Button from './Button';
+import { NavLink } from './NavLink';
 
 const Navbar = () => {
   return (
@@ -12,17 +12,7 @@ const Navbar = () => {
           <Image src={logo} alt={'logo'} />
         </Link>
 
-        <ul className="hidden h-full gap-12 lg:flex">
-          {NAV_LINKS.map(({ key, href, label }) => (
-            <Link
-              key={key}
-              href={href}
-              className="regular-16 text-gray-50 cursor-pointer pb-1.5 transition-all hover:font-bold"
-            >
-              {label}
-            </Link>
-          ))}
-        </ul>
+        <NavLink />
 
         <div className="lg:flexCenter hidden">
           <Button
