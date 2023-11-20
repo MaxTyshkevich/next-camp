@@ -6,9 +6,8 @@ import Footer from '@/components/Footer';
 
 // i18n
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
-
-const locales = ['en', 'ru'];
+import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { locales } from '@/middleware';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Travel UI/UX',
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: { locale },
 }: {
@@ -27,12 +26,7 @@ export default async function RootLayout({
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 
-  let messages;
-  try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
+  const messages = useMessages();
 
   return (
     <html lang={locale}>

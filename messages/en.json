@@ -1,4 +1,11 @@
 {
+  "Links": {
+    "home": "Home",
+    "how_hilink_work": "How Hilink Work?",
+    "services": "Services",
+    "pricing": "Pricing",
+    "contact_us": "Contact Us"
+  },
   "Hero": {
     "title": "Putuk Truno Camp Area",
     "description": "We want to be on each of your journeys seeking the satisfaction of seeing the incorruptible beauty of nature. We can help you on an adventure around the world in just one app"

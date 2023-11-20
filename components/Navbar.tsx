@@ -1,10 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/public/hilink-logo.svg';
+import { NAV_LINKS } from '@/contants';
 import Button from './Button';
 import { NavLink } from './NavLink';
+import { useTranslations } from 'next-intl';
 
 const Navbar = () => {
+  /*  const translateLinks = useTranslations('Links');
+  const list = translateLinks();
+  console.log({ list }); */
   return (
     <header>
       <nav className="flexBetween max-container padding-container relative z-30 py-5">
@@ -12,7 +17,7 @@ const Navbar = () => {
           <Image src={logo} alt={'logo'} />
         </Link>
 
-        <NavLink />
+        <NavLink links={NAV_LINKS} />
 
         <div className="lg:flexCenter hidden">
           <Button

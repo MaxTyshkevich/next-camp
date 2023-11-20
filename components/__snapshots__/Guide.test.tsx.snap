@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Guide snapshot component 1`] = `
+<div>
+  <section
+    class="flexCenter flex-col"
+  >
+    <div
+      class=" padding-container max-container w-full pb-24"
+    >
+      <img
+        alt="camp"
+        data-nimg="1"
+        decoding="async"
+        height="50"
+        loading="lazy"
+        src="/camp.svg"
+        style="color: transparent;"
+        width="50"
+      />
+      <p
+        class="uppercase regular-18 text-green-500 -mt-1 mb-3"
+      >
+        WE ARE HERE FOR YOU
+      </p>
+      <div
+        class="flex flex-wrap justify-between gap-5 lg:gap-10"
+      >
+        <h2
+          class="bold-40 lg:bold-64 xl:max-w-[390px]"
+        >
+          Guide You to Easy Path
+        </h2>
+        <p
+          class="regular-16 text-gray-30 xl:max-w-[520px]"
+        >
+          Only with the hilink application you will no longer get lost and get lost again, because we already support offline maps when there is no internet connection in the field. Invite your friends, relatives and friends to have fun in the wilderness through the valley and reach the top of the mountain
+        </p>
+      </div>
+    </div>
+    <div
+      class="flexCenter max-container relative w-full "
+    >
+      <img
+        alt="boat"
+        class="w-full object-cover object-center 2xl:rounded-5xl"
+        data-nimg="1"
+        decoding="async"
+        height="580"
+        loading="lazy"
+        src="/_next/image?url=%2Fboat.png&w=3840&q=75"
+        srcset="/_next/image?url=%2Fboat.png&w=1920&q=75 1x, /_next/image?url=%2Fboat.png&w=3840&q=75 2x"
+        style="color: transparent;"
+        width="1440"
+      />
+      <div
+        class="absolute flex bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%] lg:top-20"
+      >
+        <img
+          alt="meter"
+          class="h-full w-auto"
+          data-nimg="1"
+          decoding="async"
+          height="167"
+          loading="lazy"
+          src="/meter.svg"
+          style="color: transparent;"
+          width="26"
+        />
+        <div
+          class="flexBetween flex-col"
+        >
+          <div
+            class="flex w-full flex-col"
+          >
+            <div
+              class="flexBetween w-full"
+            >
+              <p
+                class="regular-16 text-gray-20"
+              >
+                Distination
+              </p>
+              <p
+                class="bold-16 text-green-50"
+              >
+                48min
+              </p>
+            </div>
+            <p
+              class="bold-20 mt-2"
+            >
+              Aguas Calientes
+            </p>
+          </div>
+          <div
+            class="flex w-full flex-col"
+          >
+            <p
+              class="regular-16 text-gray-20"
+            >
+              Start track
+            </p>
+            <h4
+              class="bold-20 mt-2 whitespace-nowrap"
+            >
+              Wonorejo Pasuruan
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

@@ -1,0 +1,30 @@
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import Home from './page';
+
+jest.mock('next-intl', () => ({
+  useTranslation: jest.fn().mockReturnValue({
+    t: jest.fn(),
+  }),
+}));
+
+describe('Home', () => {
+  it('renders a heading', () => {
+    render(<Home />);
+
+    const heading = screen.getByRole('heading', {
+      name: /Get for Free Now!/i,
+    });
+
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('renders a Links Navigation', () => {
+    render(<Home />);
+
+    const links = screen.getAllByRole('link');
+
+    console.log(links);
+    expect(links).toBeInTheDocument();
+  });
+});

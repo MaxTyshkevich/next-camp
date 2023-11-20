@@ -1,9 +1,10 @@
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Button from './Button';
+import { useTranslations } from 'next-intl';
 
 const Hero = () => {
   const t = useTranslations('Hero');
+  console.log(`Component Hero`);
   return (
     <section className="relative max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row">
       <div className="hero-map" />
