@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing Button Button Snapshot 1`] = `
+<div>
+  <button
+    class="flexCenter rounded-full
+       border gap-3 btn_white "
+    type="button"
+  >
+    <label
+      class="bold-16 whitespace-nowrap cursor-pointer"
+    >
+      Testing title
+    </label>
+  </button>
+</div>
+`;
