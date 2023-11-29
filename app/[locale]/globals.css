@@ -10,9 +10,12 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Inter;
+/* body {
+  font-family: var(--font-primary);
 }
+h1 {
+  font-family: var(--font-secondary);
+} */
 
 @layer utilities {
   .btn_white {

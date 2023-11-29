@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Acme } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,21 +8,39 @@ import Footer from '@/components/Footer';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { locales } from '@/middleware';
+import { getTranslations } from 'next-intl/server';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-primary' });
+const acme = Acme({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-secondary',
+});
 
-export const metadata: Metadata = {
-  title: 'Travel',
-  description: 'Travel UI/UX',
+type LayoutProps = {
+  children: React.ReactNode;
+  params: { locale: string };
+};
+
+type MetadataProps = Pick<LayoutProps, 'params'>;
+
+export const generateMetadata = async ({
+  params: { locale },
+}: MetadataProps) => {
+  const t = await getTranslations('Metadata');
+  return {
+    title: {
+      template: `%s | ${t('title')}`,
+      default: t('title'),
+    },
+    description: t('description'),
+  };
 };
 
 export default function RootLayout({
   children,
   params: { locale },
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+}: LayoutProps) {
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 
@@ -31,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <body className={inter.className}>
+        <body className={`${inter.variable} ${acme.variable} font-myInter`}>
           <Navbar />
           <main className="relative overflow-hidden">{children}</main>
           <Footer />

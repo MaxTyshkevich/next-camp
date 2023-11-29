@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        myInter: ['var(--font-primary)'],
+        myAcme: ['var(--font-secondary)'],
+      },
       colors: {
         green: {
           50: '#30AF5B',
