@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/public/hilink-logo.svg';
@@ -5,11 +6,11 @@ import { NAV_LINKS } from '@/contants';
 import Button from './Button';
 import { NavLink } from './NavLink';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 
 const Navbar = () => {
-  /*  const translateLinks = useTranslations('Links');
-  const list = translateLinks();
-  console.log({ list }); */
+  const [isShow, setIsShow] = useState(false);
+  console.log({ isShow });
   return (
     <header>
       <nav className="flexBetween max-container padding-container relative z-30 py-5">
@@ -28,9 +29,20 @@ const Navbar = () => {
           />
         </div>
 
-        <button className="lg:hidden">
+        <button className="lg:hidden" onClick={() => setIsShow(!isShow)}>
           <Image src={'/menu.svg'} height={32} width={32} alt="menu" />
         </button>
+
+        {isShow && (
+          <div className="absolute">
+            {' '}
+            <ul>
+              {NAV_LINKS.map((navLink) => (
+                <li>{navLink.label}</li>
+              ))}
+            </ul>{' '}
+          </div>
+        )}
       </nav>
     </header>
   );

@@ -7,8 +7,9 @@ import Footer from '@/components/Footer';
 // i18n
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { locales } from '@/middleware';
+
 import { getTranslations } from 'next-intl/server';
+import { locales } from '@/navigation';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-primary' });
 const acme = Acme({
@@ -41,6 +42,7 @@ export default function RootLayout({
   children,
   params: { locale },
 }: LayoutProps) {
+  console.log('root loyout', { locale });
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 

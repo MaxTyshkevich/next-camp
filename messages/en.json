@@ -3,6 +3,10 @@
     "title": "Travel",
     "description": "Travel UI/UX"
   },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, ru {Russian} en {English} other {Unknown}}"
+  },
   "Links": {
     "home": "Home",
     "how_hilink_work": "How Hilink Work?",

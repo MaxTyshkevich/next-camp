@@ -3,6 +3,10 @@
     "title": "Путешествие",
     "description": "Путешествие UI/UX"
   },
+  "LocaleSwitcher": {
+    "label": "Изменить язык",
+    "locale": "{locale, select, ru {Russian} en {Englisch} other {Неизвестный}}"
+  },
   "Links": {
     "home": "Главная",
     "how_hilink_work": "Как мы Работаем",

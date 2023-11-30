@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/public/hilink-logo.svg';
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '@/contants';
+import LocaleSwitcher from './LocaleSwitcher';
 
 const Footer = () => {
   return (
@@ -62,6 +63,8 @@ const Footer = () => {
                 </ul>
               </FooterLink>
             </div>
+
+            <LocaleSwitcher />
           </div>
         </div>
 
