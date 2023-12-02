@@ -7,6 +7,7 @@ import Button from './Button';
 import { NavLink } from './NavLink';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { SideBar } from './SideBar';
 
 const Navbar = () => {
   const [isShow, setIsShow] = useState(false);
@@ -17,9 +18,7 @@ const Navbar = () => {
         <Link href="/">
           <Image src={logo} alt={'logo'} />
         </Link>
-
         <NavLink links={NAV_LINKS} />
-
         <div className="lg:flexCenter hidden">
           <Button
             type={'button'}
@@ -28,12 +27,11 @@ const Navbar = () => {
             variant={'btn_dark_green'}
           />
         </div>
-
         <button className="lg:hidden" onClick={() => setIsShow(!isShow)}>
           <Image src={'/menu.svg'} height={32} width={32} alt="menu" />
         </button>
-
-        {isShow && (
+        {isShow && <SideBar setShow={setIsShow} links={NAV_LINKS} />}
+        {/*  {isShow && (
           <div className="absolute">
             {' '}
             <ul>
@@ -42,7 +40,7 @@ const Navbar = () => {
               ))}
             </ul>{' '}
           </div>
-        )}
+        )} */}
       </nav>
     </header>
   );
