@@ -10,8 +10,8 @@ import { useState } from 'react';
 import { SideBar } from './SideBar';
 
 const Navbar = () => {
-  const [isShow, setIsShow] = useState(false);
-  console.log({ isShow });
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header>
       <nav className="flexBetween max-container padding-container relative z-30 py-5">
@@ -27,10 +27,10 @@ const Navbar = () => {
             variant={'btn_dark_green'}
           />
         </div>
-        <button className="lg:hidden" onClick={() => setIsShow(!isShow)}>
+        <button className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
           <Image src={'/menu.svg'} height={32} width={32} alt="menu" />
         </button>
-        {isShow && <SideBar setShow={setIsShow} links={NAV_LINKS} />}
+        <SideBar setShow={setIsOpen} links={NAV_LINKS} isOpen={isOpen} />
         {/*  {isShow && (
           <div className="absolute">
             {' '}
