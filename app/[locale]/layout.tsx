@@ -3,7 +3,8 @@ import { Inter, Acme } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import ogImage from './opengraph-image.png';
+import ogImageTwitter from './twitter-image.png';
 // i18n
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
@@ -27,7 +28,7 @@ type MetadataProps = Pick<LayoutProps, 'params'>;
 
 export const generateMetadata = async ({
   params: { locale },
-}: MetadataProps) => {
+}: MetadataProps): Promise<Metadata> => {
   const t = await getTranslations('Metadata');
   return {
     title: {
@@ -35,6 +36,25 @@ export const generateMetadata = async ({
       default: t('title'),
     },
     description: t('description'),
+    openGraph: {
+      images: [
+        {
+          url: ogImage.src,
+          width: ogImage.width,
+          height: ogImage.height,
+        },
+      ],
+    },
+
+    twitter: {
+      images: [
+        {
+          url: ogImageTwitter.src,
+          width: ogImageTwitter.width,
+          height: ogImageTwitter.height,
+        },
+      ],
+    },
   };
 };
 
