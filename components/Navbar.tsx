@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { SideBar } from './SideBar';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <header>
@@ -31,16 +31,6 @@ const Navbar = () => {
           <Image src={'/menu.svg'} height={32} width={32} alt="menu" />
         </button>
         <SideBar setShow={setIsOpen} links={NAV_LINKS} isOpen={isOpen} />
-        {/*  {isShow && (
-          <div className="absolute">
-            {' '}
-            <ul>
-              {NAV_LINKS.map((navLink) => (
-                <li>{navLink.label}</li>
-              ))}
-            </ul>{' '}
-          </div>
-        )} */}
       </nav>
     </header>
   );

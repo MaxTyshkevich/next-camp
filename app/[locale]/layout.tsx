@@ -29,6 +29,7 @@ type MetadataProps = Pick<LayoutProps, 'params'>;
 export const generateMetadata = async ({
   params: { locale },
 }: MetadataProps): Promise<Metadata> => {
+  console.log({ ogImage });
   const t = await getTranslations('Metadata');
   return {
     title: {
