@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { SideBar } from './SideBar';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header>
