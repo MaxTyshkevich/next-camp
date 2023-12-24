@@ -46,7 +46,6 @@ export const generateMetadata = async ({
         },
       ],
     },
-
     twitter: {
       images: [
         {
