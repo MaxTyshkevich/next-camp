@@ -29,7 +29,6 @@ type MetadataProps = Pick<LayoutProps, 'params'>;
 export const generateMetadata = async ({
   params: { locale },
 }: MetadataProps): Promise<Metadata> => {
-  console.log({ ogImage });
   const t = await getTranslations('Metadata');
   return {
     title: {
@@ -55,6 +54,8 @@ export const generateMetadata = async ({
         },
       ],
     },
+
+    metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   };
 };
 
