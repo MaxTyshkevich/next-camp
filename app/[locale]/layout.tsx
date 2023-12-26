@@ -26,6 +26,7 @@ type LayoutProps = {
 
 type MetadataProps = Pick<LayoutProps, 'params'>;
 
+console.log({ host: process.env.VERCEL_URL });
 export const generateMetadata = async ({
   params: { locale },
 }: MetadataProps): Promise<Metadata> => {
@@ -55,7 +56,9 @@ export const generateMetadata = async ({
       ],
     },
 
-    metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
+    metadataBase:
+      new URL(`https://${process.env.VERCEL_URL}`) ||
+      'https://next-camp.vercel.app/',
   };
 };
 
@@ -63,7 +66,7 @@ export default function RootLayout({
   children,
   params: { locale },
 }: LayoutProps) {
-  console.log('root loyout', { locale });
+  console.log('Global Layout');
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 

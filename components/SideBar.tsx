@@ -1,10 +1,8 @@
 'use client';
-import { useTranslations } from 'next-intl';
+
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { Dispatch, SetStateAction } from 'react';
-import { Fragment, useState } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Transition } from '@headlessui/react';
 import { createPortal } from 'react-dom';
 
 type SideBarProps = {
@@ -18,7 +16,6 @@ type SideBarProps = {
 };
 
 export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
-  const translateLinks = useTranslations('Links');
   const selectedLayoutSegment = useSelectedLayoutSegment();
   const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : '/';
 
@@ -40,15 +37,6 @@ export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        {/*  <Dialog as="div" className="relative z-40" onClose={handleCloses}> */}
-        {/*  <Transition.Child
-            enter="transition ease-in-out duration-300 transform"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-300 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          > */}
         <div
           className="fixed top-0 left-0 min-h-screen w-screen antialiased bg-gray-200 bg-opacity-50  text-gray-800 z-40"
           onClick={handleCloses}
@@ -104,10 +92,8 @@ export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
             </div>
           </div>
         </div>
-        {/*      </Transition.Child>
-        </Dialog>*/}
       </Transition.Child>
     </Transition.Root>,
-    document.body
+    window.document.body
   );
 };

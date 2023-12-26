@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og';
-
+import OgImage from '@/public/opengraph-image.png';
 export const runtime = 'edge';
 
 export const alt = 'About Acme';
@@ -10,9 +10,6 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
-  const ImageData = await fetch(
-    new URL('../opengraph-image.png', import.meta.url)
-  );
   return new ImageResponse(
     (
       <div
@@ -26,13 +23,7 @@ export default async function Image() {
           justifyContent: 'center',
         }}
       >
-        <img
-          src={ImageData}
-          alt="lala"
-          style={{ width: 256, height: 256 }}
-          width="250"
-          height="250"
-        />
+        <img src={OgImage.src} alt="lala" style={{ width: 256, height: 256 }} />
         my Text
       </div>
     ),

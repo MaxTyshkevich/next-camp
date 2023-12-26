@@ -6,6 +6,7 @@ export const metadata: Metadata = {
 };
 
 const Services = () => {
+  console.log('s', import.meta.url);
   return (
     <div>
       <h2>Page Services</h2>
