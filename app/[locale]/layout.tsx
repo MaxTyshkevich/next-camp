@@ -56,9 +56,7 @@ export const generateMetadata = async ({
       ],
     }, */
 
-    /* metadataBase:
-      new URL(`https://${process.env.VERCEL_URL}`) ||
-      'https://next-camp.vercel.app/', */
+    metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   };
 };
 
