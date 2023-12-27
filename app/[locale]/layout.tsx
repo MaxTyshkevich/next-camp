@@ -37,7 +37,7 @@ export const generateMetadata = async ({
       default: t('title'),
     },
     description: t('description'),
-    openGraph: {
+    /*  openGraph: {
       images: [
         {
           url: ogImage.src,
@@ -54,11 +54,11 @@ export const generateMetadata = async ({
           height: ogImageTwitter.height,
         },
       ],
-    },
+    }, */
 
-    metadataBase:
+    /* metadataBase:
       new URL(`https://${process.env.VERCEL_URL}`) ||
-      'https://next-camp.vercel.app/',
+      'https://next-camp.vercel.app/', */
   };
 };
 
