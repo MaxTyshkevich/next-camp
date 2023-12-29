@@ -1,9 +1,9 @@
 'use client';
 
-import { useSelectedLayoutSegment } from 'next/navigation';
-import { Dispatch, SetStateAction, useEffect } from 'react';
-import { Transition } from '@headlessui/react';
 import { createPortal } from 'react-dom';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import { Transition } from '@headlessui/react';
 
 type SideBarProps = {
   setShow: Dispatch<SetStateAction<boolean>>;
@@ -18,6 +18,11 @@ type SideBarProps = {
 export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
   const selectedLayoutSegment = useSelectedLayoutSegment();
   const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : '/';
+  const refBody = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    refBody.current = document.body;
+  }, []);
 
   const handleCloses: React.MouseEventHandler<
     HTMLDivElement | HTMLButtonElement
@@ -27,75 +32,75 @@ export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
     }
   };
 
-  /* return createPortal(
-    <Transition.Root show={isOpen}>
-      <Transition.Child
-        enter="transition-opacity ease-linear duration-300"
-        enterFrom="right-0"
-        enterTo="right-0"
-        leave="transition-opacity ease-linear duration-300"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div
-          className="fixed top-0 left-0 min-h-screen w-screen antialiased bg-gray-200 bg-opacity-50  text-gray-800 z-40"
-          onClick={handleCloses}
-        >
-          <div className="fixed flex flex-col top-0 right-0 w-64 bg-gray-900 h-full shadow-lg">
-            <div className="overflow-y-auto overflow-x-hidden flex-grow relative">
-              <div className="flex flex-col py-6 space-y-1 px-5">
-                <div className="flex flex-row items-center h-8">
-                  <h3 className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
-                    Navigation
-                  </h3>
-                </div>
+  return refBody.current
+    ? createPortal(
+        <Transition.Root show={isOpen}>
+          <Transition.Child
+            enter="transition-opacity ease-linear duration-300"
+            enterFrom="right-0"
+            enterTo="right-0"
+            leave="transition-opacity ease-linear duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div
+              className="fixed top-0 left-0 min-h-screen w-screen antialiased bg-gray-200 bg-opacity-50  text-gray-800 z-40"
+              onClick={handleCloses}
+            >
+              <div className="fixed flex flex-col top-0 right-0 w-64 bg-gray-900 h-full shadow-lg">
+                <div className="overflow-y-auto overflow-x-hidden flex-grow relative">
+                  <div className="flex flex-col py-6 space-y-1 px-5">
+                    <div className="flex flex-row items-center h-8">
+                      <h3 className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
+                        Navigation
+                      </h3>
+                    </div>
 
-                <ul>
-                  {links.map((link) => {
-                    const isActive = pathname === link.href;
+                    <ul>
+                      {links.map((link) => {
+                        const isActive = pathname === link.href;
 
-                    return (
-                      <li key={link.label}>
-                        <a
-                          href={link.href}
-                          className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
-                        >
-                          <span className="inline-flex justify-center items-center ml-4">
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
+                        return (
+                          <li key={link.label}>
+                            <a
+                              href={link.href}
+                              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
                             >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                              ></path>
-                            </svg>
-                          </span>
-                          <span
-                            className={`ml-2 font-semibold text-sm tracking-wide truncate ${
-                              isActive ? 'text-green-50' : ''
-                            }`}
-                          >
-                            {link.label}
-                          </span>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
+                              <span className="inline-flex justify-center items-center ml-4">
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                                  ></path>
+                                </svg>
+                              </span>
+                              <span
+                                className={`ml-2 font-semibold text-sm tracking-wide truncate ${
+                                  isActive ? 'text-green-50' : ''
+                                }`}
+                              >
+                                {link.label}
+                              </span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </Transition.Child>
-    </Transition.Root>,
-    document.body
-  ); */
-
-  return null;
+          </Transition.Child>
+        </Transition.Root>,
+        refBody.current
+      )
+    : null;
 };
