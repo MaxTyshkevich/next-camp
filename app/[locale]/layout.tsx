@@ -41,6 +41,7 @@ export const generateMetadata = async ({
       template: `%s | ${t('title')}`,
       default: t('title'),
     },
+
     description: t('description'),
     /*  openGraph: {
       images: [
@@ -60,8 +61,6 @@ export const generateMetadata = async ({
         },
       ],
     }, */
-
-    metadataBase: new URL(`https://next-camp.vercel.app/`),
   };
 };
 
