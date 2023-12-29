@@ -27,7 +27,7 @@ export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
     }
   };
 
-  return createPortal(
+  /* return createPortal(
     <Transition.Root show={isOpen}>
       <Transition.Child
         enter="transition-opacity ease-linear duration-300"
@@ -94,6 +94,8 @@ export const SideBar = ({ setShow, links, isOpen }: SideBarProps) => {
         </div>
       </Transition.Child>
     </Transition.Root>,
-    window.document.body
-  );
+    document.body
+  ); */
+
+  return null;
 };

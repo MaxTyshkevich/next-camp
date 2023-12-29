@@ -9,7 +9,7 @@ import ogImageTwitter from './twitter-image.png';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-primary' });
@@ -27,6 +27,11 @@ type LayoutProps = {
 type MetadataProps = Pick<LayoutProps, 'params'>;
 
 console.log({ host: process.env.VERCEL_URL });
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export const generateMetadata = async ({
   params: { locale },
 }: MetadataProps): Promise<Metadata> => {
@@ -64,7 +69,8 @@ export default function RootLayout({
   children,
   params: { locale },
 }: LayoutProps) {
-  console.log('Global Layout');
+  unstable_setRequestLocale(locale);
+
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 

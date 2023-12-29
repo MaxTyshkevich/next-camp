@@ -1,6 +1,7 @@
-import React from 'react';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-const Pricing = () => {
+const Pricing = ({ params: { locale } }: { params: { locale: string } }) => {
+  unstable_setRequestLocale(locale);
   return <div>Price</div>;
 };
 
